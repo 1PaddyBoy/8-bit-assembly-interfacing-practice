@@ -1,0 +1,18 @@
+saveF1F2F3 0 4 1 # makes find abs 
+loadF1F2 0 2 reg1 # takes from maximum array
+loadF1F2 0 6 reg2 # saves to new maximum array
+
+addF1F2 0 0 reg0
+label clearingloop#clears the destination
+greatEThanF2 reg0 16 clearingloopend
+saveF1F3 0 reg2 0
+addF2 reg0 1 reg0
+addF2 reg2 1 reg2
+ifequalF1F2 0 0 clearingloop
+
+label clearingloopend
+addF1F2 0 0 reg0
+loadF1F2 0 6 reg2 # saves to new maximum array
+subtractF2 reg1 1 reg1
+addF1F2 0 0 reg11
+endfunction 0 0 0

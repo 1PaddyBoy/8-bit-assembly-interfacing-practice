@@ -1,0 +1,12 @@
+label print
+loadF1F2 0 6 reg5 
+loadF1 0 reg5 reg0
+addF2 reg5 1 reg5
+loadF1 0 reg5 reg1
+addF2 reg5 1 reg5
+loadF1 0 reg5 reg2
+addF2 reg5 1 reg5
+loadF1 0 reg5 reg3
+addF2 reg5 1 reg5
+loadF1 0 reg5 reg4
+endfunction 0 0 0

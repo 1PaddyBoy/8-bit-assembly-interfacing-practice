@@ -1,0 +1,106 @@
+# save and load are being changed so that they have 2 adresses and final is the avtion so:
+#save format: save ramblock indivual value
+#load format: load ramblock indivual destination
+#1 is the pointer full array
+#2 is the pointer array of maximums
+#reg1 is the adding
+saveF1F2F3 0 1 230 #save 1 is the fullarray pointer
+saveF1F2F3 0 2 100 # 2 is the pointer for array of maximums
+saveF1F2F3 0 6 50 # this is absolute max function
+prefunction1 4 0 0 
+
+saveF1F2 0 4 0
+subtractF2 reg1 1 reg1
+function 0 4 startMaxFind # this finds all local maximums
+#ifequalF1F2 0 0 print
+#saveF1F2F3 0 4 1 # makes find abs 
+#loadF1F2 0 2 reg1 # takes from maximum array
+#loadF1F2 0 6 reg2 # saves to new maximum array
+#addF1F2 0 0 reg0#covered by prefunction
+#subtractF2 reg1 1 reg1
+#addF1F2 0 0 reg11
+prefunction1 3 0 0#starts 1 way
+function 0 4 startMaxFind # this finds all water holding maximum
+prefunction1 1 0 0
+prefunction1 5 0 0#starts 2 waya
+function 0 4 startMaxFind # this finds all water holding maximum
+prefunction1 1 0 0#prints values for testing
+#prefunction1 3 0 0
+prefunction1 3 0 0#starts 2 waya
+function 0 4 startMaxFind # this finds all water holding maximum
+prefunction1 1 0 0#prints values for testing
+prefunction1 2 0 0
+
+label startMaxFind#reg10 is held value, in case no other is found
+greatEThanF2 reg0 17 startMaxFindEnd
+
+loadF1 0 reg1 reg3
+#addF2 reg1 0 output
+addF2 reg1 1 reg1
+loadF1 0 reg1 reg4
+addF2 reg1 1 reg1
+loadF1 0 reg1 reg5
+
+saveF1F2 0 5 reg0
+loadF1F2 0 4 reg0
+ifNequalF2 reg0 1 b 
+loadF1F2 0 5 reg0
+
+#finds value at things
+loadF1 0 reg3 reg3
+loadF1 0 reg4 reg4
+loadF1 0 reg5 reg5
+#reg11 is previous max
+lessThan reg4 reg11 a
+greaterThan reg4 reg3 c
+greaterThan reg4 reg5 c
+
+ifequalF1F2 0 0 a
+
+label b
+loadF1F2 0 5 reg0
+lessThan reg4 reg3 a # if either of them are true
+lessThan reg4 reg5 a
+ifequalF1F2 0 0 c
+
+#if both of them are true
+
+
+label c
+subtractF2 reg1 1 reg1
+
+saveF1F2 0 5 reg0
+loadF1F2 0 4 reg0
+ifNequalF2 reg0 1 d#if this is false then it loads the value instead 
+loadF1 0 reg1 reg0
+saveF1 0 reg2 reg0 #where the value is saved if max
+
+loadF1F2 0 5 reg0 
+ifequalF1F2 0 0 e
+
+
+label d
+loadF1F2 0 5 reg0 # save statement if not value
+saveF1 0 reg2 reg1 #where the value is saved if max
+
+
+label e # return to end and reset
+#addF2 reg1 1 reg1
+addF2 reg2 1 reg2
+addF2 reg0 1 reg0
+ifequalF1F2 0 0 startMaxFind
+
+
+label a
+#addF2 reg1 1 reg1 
+subtractF2 reg1 1 reg1
+addF2 reg0 1 reg0#this might be higher for more efficeny
+ifequalF1F2 0 0 startMaxFind
+
+
+
+
+label startMaxFindEnd
+#prefunction1 3 0 0
+label endall
+addF2 pop 4 counter

@@ -1,0 +1,56 @@
+#reg0 is the counter
+#reg1 is the max index current
+#reg2 is the sum
+#reg3 is the max index next
+#reg5 is the index
+#reg4 is the lower value
+
+addF1F2 0 0 reg0#resets reg0
+loadF1F2 0 6 reg5 #loads the start index of final maxs
+addF1F2 0 0 reg2
+label start #loops between places
+greatEThanF2 reg0 16 end #ends after 9 maxes
+loadF1 0 reg5 reg1
+addF2 reg5 1 reg5
+loadF1 0 reg5 reg3
+#loadF1 0 reg3 reg11
+lessThanF2 reg3 229 end#ends it if the next max is below possible
+#loadF1 0 reg1 reg11
+lessThanF2 reg1 229 end#ends if current index is less. 
+greatEThanF2 reg3 246 end
+greatEThanF2 reg1 246 end
+loadF1 0 reg1 reg7
+loadF1 0 reg3 reg8
+greaterThan reg7 reg8 reg1greater#loads reg4 with the value of the lower max.
+loadF1 0 reg1 reg4
+ifequalF1F2 0 0 reg1greaterafter
+
+label reg1greater
+loadF1 0 reg3 reg4
+
+label reg1greaterafter#reg4 is highest max
+subtractF2 reg3 1 reg3
+label loopbetweenmax
+greaterEThan reg1 reg3 loopbetweenmaxend
+
+loadF1 0 reg3 reg11
+lessThan reg4 reg11 zero
+subtract reg4 reg11 reg11
+ifequalF1F2 0 0 afterzero
+label zero
+addF1F2 0 0 reg11
+
+label afterzero
+add reg2 reg11 reg2
+
+subtractF2 reg3 1 reg3
+ifequalF1F2 0 0 loopbetweenmax
+label loopbetweenmaxend
+
+#addF2 reg5 1 reg5#finds next max
+addF2 reg0 1 reg0#index of loop
+ifequalF1F2 0 0 start#repeats loop
+
+label end
+addF2 reg2 0 output
+endfunction 0 0 0

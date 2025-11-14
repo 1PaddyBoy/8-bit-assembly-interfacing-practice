@@ -1,0 +1,47 @@
+Add - 0
+addF1 - 128
+addF1F2 - 192
+addF2 - 64
+controlT1 - 24
+end function - 15
+FacterEs - 6
+Function - 22
+greatEThF1F2 -229
+greatEThanF2 -101
+GreaterEThan -37
+greater than - 36
+ifNequalF2 -97
+if equalF1F2 - 224
+if equalF2 - 96
+input - 7
+lessThan-34
+lessThanF1-162
+lessThanF2-98
+load - 17
+loadF1 - 145
+loadF1F2 -209
+loadF2 - 81
+Multiply - 7
+Null - 0 
+output - 7
+Pop - 9
+Prefunction1 - 9
+Prefunction2 - 10 
+Prefunction3 - 11
+Push -8
+
+Save -16
+SaveF1 - 144
+SaveF1F2 - 208
+SaveF1F2F3 - 210
+SaveF1F3 - 146
+SaveF2 - 80
+SaveF3 - 18
+Shl- 27
+
+Shr- 26
+
+Subtract - 1
+
+Test - 24
+Xor- 5
